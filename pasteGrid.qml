@@ -116,33 +116,46 @@ MuseScore {
         cmd("copy")
 
         var endTime = curScore.lastSegment.tick;
+		var lastMeasure=curScore.lastMeasure;
+		console.log("endTime = "+endTime);
 
         startCmd(curScore, "Append measures");
 
+        // -- empty measures
+        curScore.appendMeasures(measureCount);
+		
+		// curScore.endCmd() //DEBUG
+		// curScore.startCmd() //DEBUG
+
         // -- a linebreak at the end, before the new measures
-        cursor.rewindToTick(endTime - 1);
+        cursor.rewindToTick(lastMeasure.firstSegment.tick); // must be **firstSegment** for both the line break and the double bar
         var lbreak = newElement(Element.LAYOUT_BREAK);
         lbreak.layoutBreakType = 1;
         cursor.add(lbreak);
+		console.log("Layout break added");
 
-        // -- empty measures
-        curScore.appendMeasures(measureCount);
-
-        endCmd(curScore, "Append measures");
-
-        startCmd(curScore, "Paste Grid");
-
-        // -- a double bar
-        var bar = cursor.measure.lastSegment.elementAt(0);
-        if (bar.type == Element.BAR_LINE) {
-            console.log(Object.keys(bar).filter(function (e) {
-                    return e.charAt(0) === 'b'
-                }));
+		// curScore.endCmd() //DEBUG
+		// curScore.startCmd() //DEBUG
+		
+        // -- a double bar (after having added the empty measures, otherwise breaks MS)
+        var bar = (cursor.measure)?cursor.measure.lastSegment.elementAt(0):undefined;
+        if (bar && bar.type == Element.BAR_LINE) {
+            // console.log(Object.keys(bar).filter(function (e) {
+                    // return e.charAt(0) === 'b'
+                // }));
             bar.barlineType = 2;
             console.log("Last element is a barline (type=" + bar.userName() + ")");
         } else {
-            console.log("Last element is not a barline (type=" + bar.userName() + ")");
+            console.log("Last element is not a barline (type=" + (bar?bar.userName():"undefined") + ")");
         }
+
+
+
+        endCmd(curScore, "Append measures"); // Must be in 2 separated commands
+        startCmd(curScore, "Paste Grid");
+
+
+
 
         // -- pasting the re-selection
         cursor.rewindToTick(endTime);
@@ -159,7 +172,7 @@ MuseScore {
             console.log("layoutBreakType at measure " + i + ": " + lbt);
             if (lbt !== undefined) {
                 console.log("adding a break at measure " + i);
-                cursor.rewindToTick(measure.lastSegment.tick);
+                cursor.rewindToTick(measure.firstSegment.tick);
                 var lbreak = newElement(Element.LAYOUT_BREAK);
                 lbreak.layoutBreakType = lbt;
                 cursor.add(lbreak);
