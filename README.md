@@ -6,8 +6,11 @@
 Select a range of notes, and execute the plugin. The selection will be appended at the end of the score, with the **Chord Symbols**, the **layout breaks**, but with all the chords and notes replaced by rests.
 
 ## Download and Install ##
-Download the [last stable version](https://github.com/lgvr123/musescore-elementanalyser/releases).
+Download the [last stable version](https://github.com/lgvr123/musescore-pastegrid/releases).
 For installation see [Plugins](https://musescore.org/en/handbook/3/plugins).
+
+## Support ##
+[<img src="/support/Button-Tipeee.png" alt="Support me on Tipee" height="80"/>](https://fr.tipeee.com/parkingb)
 
 ## IMPORTANT
 NO WARRANTY THE PROGRAM IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
