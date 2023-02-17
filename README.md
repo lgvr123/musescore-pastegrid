@@ -9,6 +9,9 @@ Select a range of notes, and execute the plugin. The selection will be appended 
 Download the [last stable version](https://github.com/lgvr123/musescore-pastegrid/releases).
 For installation see [Plugins](https://musescore.org/en/handbook/3/plugins).
 
+## Support of MS4.0
+**ADAPTATION ON GOING**
+
 ## Sponsorship
 If you appreciate my plugins, you can support and sponsor their development on the following platforms:
 [<img src="/support/Button-Tipeee.png" alt="Support me on Tipee" height="50"/>](https://www.tipeee.com/parkingb) 
